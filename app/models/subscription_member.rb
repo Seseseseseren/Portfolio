@@ -1,0 +1,2 @@
+class SubscriptionMember < ApplicationRecord
+end
