@@ -6,5 +6,31 @@ Rails.application.routes.draw do
   registrations: "user/registrations",
   sessions: 'user/sessions'
 }
+
+namespace :owner do
+    root to: 'homes#top'
+    #get 'search' => 'search#search'
+    resources :subscriptions,except:[:destroy]
+    resources :genres,except:[:show,:destroy,:new]
+    resources :users,except:[:new,:create,:destroy]
+  end
+  
+  scope module: :user do
+    root to: 'homes#top'
+    #get 'search' => 'search#search'
+    get 'about' => 'homes#about'
+    resources :subscriptions,only:[:index,:show]
+    resources :reviews,except:[:show,:new,:create,:edit,:destroy]
+    delete 'reviews' => 'reviews#destroy'
+    post 'reviews/confirm' => 'reviews#confirm'
+    resource :users,only:[:edit,:update] do
+      get 'mypage' => 'users#mypage'
+      get 'mypage/edit' => 'users#edit'
+      patch 'mypage/update' => 'users#update'
+      get 'unsubscribe' => 'users#unsubscribe'
+      patch 'withdraw' => 'users#withdraw'
+    end
+  end
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
