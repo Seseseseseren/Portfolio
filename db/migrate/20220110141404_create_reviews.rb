@@ -5,7 +5,7 @@ class CreateReviews < ActiveRecord::Migration[5.2]
       t.integer :subscription_id
       t.string :title, null: false, default: ""
       t.float :rate
-      t.text :body, null: false, default: ""
+      t.text :body
 
       t.timestamps
     end
