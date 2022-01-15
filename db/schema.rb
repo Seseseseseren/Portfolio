@@ -10,11 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_10_141404) do
+ActiveRecord::Schema.define(version: 2022_01_15_092537) do
 
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id"
     t.integer "subscription_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "genres", force: :cascade do |t|
+    t.string "name", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -37,12 +43,6 @@ ActiveRecord::Schema.define(version: 2022_01_10_141404) do
     t.string "title", default: "", null: false
     t.float "rate"
     t.text "body", default: "", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "subscription_genres", force: :cascade do |t|
-    t.string "name", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

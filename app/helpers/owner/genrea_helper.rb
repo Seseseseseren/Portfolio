@@ -1,2 +1,0 @@
-module Owner::GenreaHelper
-end

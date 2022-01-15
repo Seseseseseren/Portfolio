@@ -1,2 +1,0 @@
-class SubscriptionGenre < ApplicationRecord
-end
