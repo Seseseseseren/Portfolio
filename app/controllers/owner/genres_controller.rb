@@ -18,13 +18,12 @@ end
 
 def update
   genre = Genre.find(params[:id])
-  if genre = Genre.update(genre_params)
+  if genre.update(genre_params)
     redirect_to owner_genres_path
   else
     redirect_to request.referer
   end
 end
-
 
 private
 def genre_params
