@@ -14,7 +14,7 @@ namespace :owner do
     resources :genres,except:[:show,:destroy,:new]
     resources :users,except:[:new,:create,:destroy]
   end
-  
+
   scope module: :user do
     root to: 'homes#top'
     #get 'search' => 'search#search'
