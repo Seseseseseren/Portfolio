@@ -1,0 +1,33 @@
+  <div class="container">
+ <div class="row">
+  <div class="col m-3">
+    <h2 class="text-white">サブスクリプション一覧</h2><br>
+        <p class="text-right"><%= link_to "サブスクを新規登録",new_owner_subscription_path, class:"btn btn-primary text-white" %></p>
+    <table class="table table-borderless table-dark" style="opacity: 0.8;">
+      <thead>
+        <tr>
+          <th scope="col">サブスクID</th>
+          <th scope="col">サブスク名</th>
+          <th scope="col">ジャンル</th>
+          <th scope="col">料金</th>
+          <th scope="col">支払日</th>
+          <th></th>
+          <th scope="col">レビュー数</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @subscriptions.each do |subscription| %>
+        <tr>
+          <th scope="low"><%= subscription.id %></th>
+          <th scope="low"><%= link_to subscription.subscription_name, owner_subscription_path(subscription), class:"text-white" %></th>
+    	  <th scope="low"><%= subscription.genre.name %></th>
+          <th scope="low"><%= subscription.subscription_fee.to_s(:delimited) %>円</th>
+          <th scope="low"><%= subscription.payment_date %></th>
+    	    <th></th>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+ </div>
+</div>
