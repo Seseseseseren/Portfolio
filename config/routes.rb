@@ -13,6 +13,7 @@ namespace :owner do
     resources :subscriptions,except:[:destroy]
     resources :genres,except:[:show,:destroy,:new]
     resources :users,except:[:new,:create,:destroy]
+    resources :users,except:[:new,:create,:destroy]
   end
 
   scope module: :user do
