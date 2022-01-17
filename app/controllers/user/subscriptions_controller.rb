@@ -6,6 +6,7 @@ class User::SubscriptionsController < ApplicationController
   
   def show
     @subscription = Subscription.find(params[:id])
+    @review = Review.new
   end
 
   

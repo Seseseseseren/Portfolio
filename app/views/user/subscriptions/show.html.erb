@@ -34,12 +34,60 @@
     	     </td>
     	   </tr>
     	  </table>
+
     	  </div>
     </div>
+    <h2>レビューを書く</h2>
+<div class = "rating-box mt-3" >
+  <%= form_with model: @review, url: subscription_reviews_path(@subscription.id), local: true do |f| %>
+  <%= f.hidden_field :subscription_id, { value: @subscription.id} %>
+
+    <!-- タイトル -->
+  <div class="form-group row">
+    <%= f.label :title, 'タイトル ', class:'col-md-3 col-form-label' %>
+    <div class="col-md-9">
+      <%= f.text_field :title, class: "form-control",
+      placeholder:'一番伝えたいことを記入してください' %>
+    </div>
+  </div>
+
+  <!-- 評価 -->
+  <div class="form-group row" id="rate">
+    <%= f.label :star,'評価 ', class:'col-md-3 col-form-label' %>
+    <%= f.hidden_field :star, id: :review_star %>
+  </div>
+
+  <!-- 評価javascript -->
+  <script>
+  $('#rate').raty({
+    size     : 20,
+    starOff:  '<%= asset_path('star-off.png') %>',
+    starOn : '<%= asset_path('star-on.png') %>',
+    starHalf: '<%= asset_path('star-half.png') %>',
+    scoreName: 'review[rate]',
+    half: true,
+  });
+  </script>
+
+  <!-- 口コミ -->
+  <div class="form-group row">
+    <%= f.label :body, '口コミ内容 ', class:'col-md-3 col-form-label' %>
+    <div class="col-md-9">
+      <%= f.text_area :body, class: "form-control", rows: "8",
+        placeholder:'ここに詳細を記入してください' %>
+    </div>
+  </div>
+
+  <!-- 確認ボタン -->
+  <div class="form-group row justify-content-end">
+    <div class="col-md-9">
+      <%= f.submit '投稿する', class:"btn btn-success" %>
+    </div>
+  </div>
+
+<% end %>
+    <%#= render reviews/user_reviews_form, review: @review %>
    </div>
-   <div class="d-flex justify-content-center mb-5">
-     <%= link_to "レビューを記載する", new_review_path(@subscription), class:'btn btn-success' %>
-   </div>
-   </div>
+  </div>
  </div>
 </div>
