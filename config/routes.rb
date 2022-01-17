@@ -20,8 +20,8 @@ namespace :owner do
     root to: 'homes#top'
     #get 'search' => 'search#search'
     get 'about' => 'homes#about'
-    resources :subscriptions,only:[:index,:show]
-    resources :reviews,except:[:show,:new,:create,:edit,:destroy]
+    resources :subscriptions,only:[:index, :show]
+    resources :reviews,only:[:new, :create, :edit, :destroy]
     delete 'reviews' => 'reviews#destroy'
     post 'reviews/confirm' => 'reviews#confirm'
     resource :users,only:[:edit,:update] do

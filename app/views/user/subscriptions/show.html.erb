@@ -1,0 +1,45 @@
+<div class="container">
+ <div class="row">
+  <div class="col m-3">
+    <h1 class>サブスクリプション詳細</h1><br>
+    <div class = "col-9 mt-5" >
+    	<div class="row">
+        <div class="col -5 text-center" >
+          <%= attachment_image_tag @subscription, :subscription_image, :fill, 200, 200  %>
+    　　</div>
+    　　<div class = "col -5" >
+    　　  <table class="table table-borderless table-dark" style="opacity: 0.8;">
+         <tr>
+           <th>サブスク名</th>
+    	     <td><%= @subscription.subscription_name %></td>
+         </tr>
+         <tr>
+    	     <th>ジャンル</th>
+    	     <td><%= @subscription.genre.name %></td>
+    	   </tr>
+    	   <tr>
+    	     <th>料金</th>
+    	     <td><%= @subscription.subscription_fee.to_s(:delimited) %></td>
+    	   </tr>
+    		 <tr>
+    	     <th>支払月</th>
+    	     <td>
+    	       <%= @subscription.payment_date %>
+    	     </td>
+    	   </tr>
+    	   <tr>
+    	     <th>評価</th>
+    	     <td>
+    	       <%#= @subscription.reviews.rate %>
+    	     </td>
+    	   </tr>
+    	  </table>
+    	  </div>
+    </div>
+   </div>
+   <div class="d-flex justify-content-center mb-5">
+     <%= link_to "レビューを記載する", new_review_path(@subscription), class:'btn btn-success' %>
+   </div>
+   </div>
+ </div>
+</div>
