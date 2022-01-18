@@ -1,14 +1,13 @@
 <div class="container">
+<h1 class>サブスクリプション詳細</h1><br>
  <div class="row">
-  <div class="col m-3">
-    <h1 class>サブスクリプション詳細</h1><br>
     <div class = "col-9 mt-5" >
     	<div class="row">
         <div class="col -5 text-center" >
           <%= attachment_image_tag @subscription, :subscription_image, :fill, 200, 200  %>
-    　　</div>
-    　　<div class = "col -5" >
-    　　  <table class="table table-borderless table-dark" style="opacity: 0.8;">
+        </div>
+        <div class = "col -5" review_user >
+        <table class="table table-borderless">
          <tr>
            <th>サブスク名</th>
     	     <td><%= @subscription.subscription_name %></td>
@@ -34,44 +33,89 @@
     	     </td>
     	   </tr>
     	  </table>
-
     	  </div>
     </div>
-    <h2>レビューを書く</h2>
-<div class = "rating-box mt-3" >
-  <%= form_with model: @review, url: subscription_reviews_path(@subscription.id), local: true do |f| %>
-  <%= f.hidden_field :subscription_id, { value: @subscription.id} %>
-
-    <!-- タイトル -->
-  <div class="form-group row">
-    <%= f.label :title, 'タイトル ', class:'col-md-3 col-form-label' %>
+  </div>
     <div class="col-md-9">
-      <%= f.text_field :title, class: "form-control",
-      placeholder:'一番伝えたいことを記入してください' %>
+    <% @reviews.each do |review| %>
+    <div class = "col-md-2">
+      <div class = "review-user"><%= review.user.user_name %></div>
     </div>
-  </div>
+    <div class="col-md-4">
+      <div class="review-title">
+        <p><%= review.title %></p>
+      </div>
+      <div class = "col-md-6 mb-3">
+        <div class = "review-content">
+          <p><%= review.created_at %></p>
+          <h4 class ="mb-3">評価:<div id = "star-rate-<%= review.id %>"></div>
+          ｜<%= review.title %>
+          </h4>
+          <script>
+            $('#star-rate-<%= review.id %>').raty({
+            size: 36,
+            starOff:  '<%= asset_path('star-off.png') %>',
+            starOn : '<%= asset_path('star-on.png') %>',
+            starHalf: '<%= asset_path('star-half.png') %>',
+            half: true,
+            readOnly: true,
+            score: <%= review.rate %>,
+          });
+          </script>
+          
+        </div>
+      </div>
+      </div>
+      <div class="col-md-4">
+      <div class="review-body">
+        <p><%= review.body %></p>
+      </div>
+      </div>
+      <div class="col-md-12 edit-button">
+        <% if current_user == review.user %>
+          <%= link_to '口コミを編集',  method: :get, class:'btn btn-default' %>
+          <%= link_to '口コミを削除', method: :delete, class:'btn btn-default' %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
 
-  <!-- 評価 -->
-  <div class="form-group row" id="rate">
-    <%= f.label :star,'評価 ', class:'col-md-3 col-form-label' %>
-    <%= f.hidden_field :star, id: :review_star %>
-  </div>
 
-  <!-- 評価javascript -->
-  <script>
-  $('#rate').raty({
-    size     : 20,
-    starOff:  '<%= asset_path('star-off.png') %>',
-    starOn : '<%= asset_path('star-on.png') %>',
-    starHalf: '<%= asset_path('star-half.png') %>',
-    scoreName: 'review[rate]',
-    half: true,
-  });
-  </script>
+    <h2>レビューを書く</h2>
+    <div class = "rating-box mt-3" >
+      <%= form_with model: @review, url: subscription_reviews_path(@subscription.id), local: true do |f| %>
+      <%= f.hidden_field :subscription_id, { value: @subscription.id} %>
+
+        <!-- タイトル -->
+      <div class="form-group row">
+        <%= f.label :title, 'タイトル ', class:'col-md-3 col-form-label' %>
+        <div class="col-md-9">
+          <%= f.text_field :title, class: "form-control",
+          placeholder:'一番伝えたいことを記入してください' %>
+        </div>
+      </div>
+
+      <!-- 星の評価 -->
+      <div class="form-group row" id="rate">
+        <%= f.label :star,'評価 ', class:'col-md-3 col-form-label' %>
+        <%= f.hidden_field :star, id: :review_star %>
+      </div>
+
+      <!-- 評価javascript -->
+      <script>
+      $('#rate').raty({
+        size     : 36,
+        starOff:  '<%= asset_path('star-off.png') %>',
+        starOn : '<%= asset_path('star-on.png') %>',
+        starHalf: '<%= asset_path('star-half.png') %>',
+        scoreName: 'review[rate]',
+        half: true,
+      });
+      </script>
 
   <!-- 口コミ -->
   <div class="form-group row">
-    <%= f.label :body, '口コミ内容 ', class:'col-md-3 col-form-label' %>
+    <%= f.label :body, '口コミ内容', class:'col-md-3 col-form-label' %>
     <div class="col-md-9">
       <%= f.text_area :body, class: "form-control", rows: "8",
         placeholder:'ここに詳細を記入してください' %>

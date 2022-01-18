@@ -23,7 +23,6 @@ namespace :owner do
     resources :subscriptions,only:[:index, :show] do
       resources :reviews,only:[:index, :create, :edit, :destroy]
     delete 'reviews' => 'reviews#destroy'
-    post 'reviews/confirm' => 'reviews#confirm'
     end
     resource :users,only:[:edit,:update] do
       get 'mypage' => 'users#mypage'
