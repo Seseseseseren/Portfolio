@@ -9,7 +9,17 @@ class User::ReviewsController < ApplicationController
   end
 
   def edit
+    @subscription = Subscription.find(params[:id])
     @review = Review.find(params[:id])
+  end
+  
+  def update
+  review = Review.find(params[:id])
+  if review.update(review_params)
+    redirect_to subscription_path(subscription.id)
+  else
+    redirect_to request.referer
+  end
   end
   
   def destroy
