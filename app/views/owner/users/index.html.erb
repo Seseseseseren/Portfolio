@@ -2,7 +2,7 @@
  <div class="row">
   <div class="col m-3">
     <h2 class="text-white">会員一覧</h2><br>
-    <table class="table table-borderless table-dark" style="opacity: 0.8;">
+    <table class="table table-borderless">
       <thead>
         <tr>
           <th scope="col" class="text-center">会員ID</th>
@@ -15,7 +15,7 @@
         <% @users.each do |user| %>
         <tr>
           <th scope="low" class="text-center"><%= user.id %></th>
-          <th scope="low"><%= link_to user.user_name, owner_user_path(user), class:"text-white" %></th>
+          <th scope="low"><%= link_to user.user_name, owner_user_path(user) %></th>
           <th scope="low"><%= user.email %></th>
     	     <% if user.is_deleted? == true %>
     	       <td class="text-danger text-center">退会</td>

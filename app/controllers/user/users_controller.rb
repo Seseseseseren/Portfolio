@@ -13,7 +13,7 @@ def unsubscribe
 end
 
 def withdraw
-  @user = current_customer
+  @user = current_user
   @user.update(is_deleted: true)
   reset_session
   redirect_to root_path
