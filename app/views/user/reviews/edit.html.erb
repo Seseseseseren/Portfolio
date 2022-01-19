@@ -3,7 +3,7 @@
     <div class="col m-3 text-white">
       <h2>レビュー編集</h2>
       <div class="mt-5">
-         <%= form_with model: @review, url: subscription_reviews_path, local: true do |f| %>
+         <%= form_with model: @review, url: subscription_path, local: true do |f| %>
           <%= f.hidden_field :subscription_id, { value: @subscription.id} %>
           <div class="form-group row">
             <%= f.label :title, 'タイトル ', class:'col-md-3 col-form-label' %>

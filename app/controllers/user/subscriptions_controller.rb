@@ -10,5 +10,11 @@ class User::SubscriptionsController < ApplicationController
     @reviews = Review.all
   end
   
+  #private
+  #def review_params
+   # params.require(:review).permit(:title, :rate, :body)
+  #end
+  
+  
 end
 

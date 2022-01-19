@@ -1,22 +1,22 @@
 class User::ReviewsController < ApplicationController
 
   def create
-    @subscription = Subscription.find(params[:subscription_id])
     @review = current_user.reviews.new(review_params)
+    @subscription = Subscription.find(params[:subscription_id])
     @review.subscription_id = @subscription.id
     @review.save
     redirect_to request.referer
   end
 
   def edit
-    @subscription = Subscription.find(params[:id])
     @review = Review.find(params[:id])
+    @subscription = Subscription.find(params[:id])
   end
   
   def update
   review = Review.find(params[:id])
   if review.update(review_params)
-    redirect_to subscription_path(subscription.id)
+    redirect_to subscription_review_path
   else
     redirect_to request.referer
   end

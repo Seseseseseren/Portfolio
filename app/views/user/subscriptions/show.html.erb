@@ -65,7 +65,7 @@
         </div>
       <div class="edit-button mt-5">
       <% if current_user == review.user %>
-        <%= link_to '口コミを編集', edit_subscription_review_path(@subscription, review.id), method: :get, class:'btn btn-default' %>
+        <%= link_to '口コミを編集', edit_subscription_review_path(@subscription,review), method: :get, class:'btn btn-default' %>
         <%= link_to '口コミを削除', subscription_review_path(review) , method: :delete, "data-confirm" => "本当に削除しますか?", class:'btn btn-default' %>
       <% end %>
       </div>
@@ -77,7 +77,7 @@
     <div class="col-md-10">
       <h2>レビューを書く</h2>
       <div class = "rating-box mt-3" >
-        <%= form_with model: @review, url: subscription_reviews_path(@subscription.id), local: true do |f| %>
+        <%= form_with model: @review, url: subscription_path(@subscription.id), local: true do |f| %>
           <%= f.hidden_field :subscription_id, { value: @subscription.id} %>
         <!-- タイトル -->
           <div class="form-group row">

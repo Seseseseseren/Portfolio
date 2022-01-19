@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 2022_01_15_092537) do
     t.integer "subscription_id"
     t.string "title", default: "", null: false
     t.float "rate"
-    t.text "body", default: "", null: false
+    t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(version: 2022_01_15_092537) do
     t.integer "genre_id"
     t.string "subscription_name", default: "", null: false
     t.string "subscription_image_id"
-    t.integer "subscription_fee", null: false
+    t.integer "subscription_fee", default: 0, null: false
     t.string "payment_date", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

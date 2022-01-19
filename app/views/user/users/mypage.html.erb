@@ -1,0 +1,32 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h2 class="text-"><%= @user.user_name %>さんのマイページ</h2>
+        <div class="col d-flex aligin-items-center p-3">
+          <h4>登録情報</h4>
+        </div>
+        <table class="table table-borderless">
+          <tr>
+            <td>氏名</td>
+            <td><%= @user.family_name %> <%= @user.first_name %></td>
+          </tr>
+          <tr>
+            <td>カナ</td>
+            <td><%= @user.family_name_kana %> <%= @user.first_name_kana %></td>
+          </tr>
+          <tr>
+            <td>ユーザー名</td>
+            <td><%= @user.user_name %></td>
+          </tr>
+            <tr>
+            <td>メールアドレス</td>
+            <td><%= @user.email %></td>
+          </tr>
+          <tr></tr>
+        </table>
+        <%= link_to "プロフィールを編集する", mypage_edit_users_path %></br>
+        <%= link_to "退会する", unsubscribe_users_path %>
+    </div>
+  </div>
+</div>
