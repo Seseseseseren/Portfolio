@@ -1,7 +1,7 @@
   <div class="container">
  <div class="row">
   <div class="col m-3">
-    <h2 class="text">サブスクリプション一覧</h2><br>
+    <h2>サブスクリプション一覧</h2><br>
         <p class="text-right"><%= link_to "サブスクを新規登録",new_owner_subscription_path, class:"btn btn-primary text-white" %></p>
     <table class="table table-borderless">
       <thead>
@@ -11,8 +11,8 @@
           <th scope="col">ジャンル</th>
           <th scope="col">料金</th>
           <th scope="col">支払日</th>
-          <th scope="col">レビュー数</th>
           <th scope="col">評価</th>
+          <th scope="col">レビュー数</th>
         </tr>
       </thead>
       <tbody>
@@ -24,7 +24,7 @@
           <th scope="low"><%= subscription.subscription_fee.to_s(:delimited) %>円</th>
           <th scope="low"><%= subscription.payment_date %></th>
     	    <th></th>
-    	    <th></th>
+    	    <th scope="low"><%=  subscription.reviews.count%></th>
         </tr>
         <% end %>
       </tbody>

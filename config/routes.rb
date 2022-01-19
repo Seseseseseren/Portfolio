@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 namespace :owner do
     root to: 'homes#top'
     #get 'search' => 'search#search'
-    resources :subscriptions,except:[:destroy]
+    resources :subscriptions
     resources :genres,except:[:show,:destroy,:new]
     resources :users,except:[:new,:create,:destroy]
   end

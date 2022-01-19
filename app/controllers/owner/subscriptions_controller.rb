@@ -37,9 +37,16 @@ class Owner::SubscriptionsController < ApplicationController
     end
   end
 
+  def destroy
+    @subscription = Subscription.find(params[:id])
+    @subscription.destroy
+    redirect_to request.referer
+  end
+
+
   private
   def subscription_params
-    params.require(:subscription).permit(:image, :subscription_name, :genre_id, :subscription_fee, :payment_date)
+    params.require(:subscription).permit(:subscription_image, :subscription_name, :genre_id, :subscription_fee, :payment_date)
   end
 
 end
