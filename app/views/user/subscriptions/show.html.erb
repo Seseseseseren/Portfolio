@@ -26,23 +26,23 @@
     	      </tr>
     	      <tr>
     	        <th>評価</th>
-    	        <td><%#= @subscription.reviews.rate %></td>
+    	        <td>
+
+    	        </td>
     	      </tr>
     	    </table>
     	  </div>
       </div>
     </div>
-  </div>
 
   <div class="row">
     <% @reviews.each do |review| %>
     <div class="col-md-11 my-5">
       <div class = "col-md-2 d-inline-block">
-
       </div>
       <div class = "col-md-10 d-inline-block">
         <div class = "review-content">
-          <p><%= review.created_at %></p>
+          <p><%= review.updated_at.strftime("%Y-%m-%d %H:%M:%S")  %></p>
           <h4 class = "review-user">ユーザー名：<%= review.user.user_name %></h4>
           <h4 class ="mb-3  d-inline-flex">
             評価:<div id = "star-rate-<%= review.id %>"></div>
@@ -77,7 +77,7 @@
     <div class="col-md-10">
       <h2>レビューを書く</h2>
       <div class = "rating-box mt-3" >
-        <%= form_with model: @review, url: subscription_path(@subscription.id), local: true do |f| %>
+        <%= form_with model: @review, url: subscription_reviews_path(@subscription.id), local: true do |f| %>
           <%= f.hidden_field :subscription_id, { value: @subscription.id} %>
         <!-- タイトル -->
           <div class="form-group row">

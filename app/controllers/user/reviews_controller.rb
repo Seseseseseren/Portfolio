@@ -1,10 +1,12 @@
 class User::ReviewsController < ApplicationController
 
   def create
-    @review = current_user.reviews.new(review_params)
+    @review = Review.new(review_params)
     @subscription = Subscription.find(params[:subscription_id])
     @review.subscription_id = @subscription.id
+    @review.user_id = current_user.id
     @review.save
+   
     redirect_to request.referer
   end
 
@@ -12,16 +14,16 @@ class User::ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     @subscription = Subscription.find(params[:id])
   end
-  
+
   def update
   review = Review.find(params[:id])
   if review.update(review_params)
-    redirect_to subscription_review_path
+    redirect_to subscription_path(review.subscription)
   else
     redirect_to request.referer
   end
   end
-  
+
   def destroy
     @review = Review.find(params[:id])
     @review.destroy
@@ -32,5 +34,5 @@ class User::ReviewsController < ApplicationController
   def review_params
     params.require(:review).permit(:title, :rate, :body)
   end
-  
+
 end

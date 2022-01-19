@@ -13,15 +13,14 @@ namespace :owner do
     resources :subscriptions,except:[:destroy]
     resources :genres,except:[:show,:destroy,:new]
     resources :users,except:[:new,:create,:destroy]
-    resources :users,except:[:new,:create,:destroy]
   end
 
   scope module: :user do
     root to: 'homes#top'
     #get 'search' => 'search#search'
     get 'about' => 'homes#about'
-    resources :subscriptions,only:[:index, :create, :edit, :show] do
-      resources :reviews,only:[:index, :create, :edit, :update, :destroy]
+    resources :subscriptions,only:[:index, :show] do
+      resources :reviews,only:[:create, :edit, :update, :destroy]
     end
     resource :users,only:[:edit,:update] do
       get 'mypage' => 'users#mypage'
