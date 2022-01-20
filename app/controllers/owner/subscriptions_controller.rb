@@ -22,7 +22,7 @@ class Owner::SubscriptionsController < ApplicationController
   def show
     @subscription = Subscription.find(params[:id])
   end
-
+  
   def edit
     @subscription = Subscription.find(params[:id])
     @genres = Genre.all
@@ -42,7 +42,6 @@ class Owner::SubscriptionsController < ApplicationController
     @subscription.destroy
     redirect_to request.referer
   end
-
 
   private
   def subscription_params

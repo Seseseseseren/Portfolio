@@ -1,0 +1,47 @@
+<div class="container">
+ <div class="row">
+  <div class="col m-3">
+    <h2>検索結果</h2><br>
+    <table class="table table-hover table-inverse">
+      <thead>
+        <tr>
+          <th scope="col">サブスク名</th>
+          <th scope="col">ジャンル</th>
+          <th scope="col">料金</th>
+          <th scope="col">支払日</th>
+          <th scope="col">評価</th>
+          <th scope="col">レビュー数</th>
+        </tr>
+      </thead>
+      <% if @range == '1' %>
+      <tbody>
+        <% @subscriptions.each do |subscription| %>
+        <tr>
+          <th scope="low"><%= link_to subscription.subscription_name, subscription_path(subscription.id) %></th>
+    	    <th scope="low"><%= subscription.genre.name %></th>
+          <th scope="low"><%= subscription.subscription_fee.to_s(:delimited) %>円</th>
+          <th scope="low"><%= subscription.payment_date %></th>
+    	    <th scope="low"><%=  %></th>
+    	    <th scope="low"><%=  subscription.reviews.count%></th>
+        </tr>
+        <% end %>
+      </tbody>
+      <% else %>
+      <tbody>
+        <% @genres.each do |genre| %>
+        <% genre.subscriptions.each do |subscription| %>
+        <tr>
+          <th scope="low"><%= link_to subscription.subscription_name, subscription_path(subscription.id) %></th>
+    	    <th scope="low"><%= subscription.genre.name %></th>
+          <th scope="low"><%= subscription.subscription_fee.to_s(:delimited) %>円</th>
+          <th scope="low"><%= subscription.payment_date %></th>
+    	    <th scope="low"><%=  %></th>
+    	    <th scope="low"><%= subscription.reviews.count%></th>
+        </tr>
+    	   <% end %>
+    	   <% end %>
+      <% end %>
+    </table>
+  </div>
+ </div>
+</div>

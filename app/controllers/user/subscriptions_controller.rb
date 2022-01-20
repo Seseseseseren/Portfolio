@@ -8,7 +8,6 @@ class User::SubscriptionsController < ApplicationController
     @subscription = Subscription.find(params[:id])
     @review = Review.new
     @reviews = @subscription.reviews
-    
   end
   
 end

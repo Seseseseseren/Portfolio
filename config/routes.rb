@@ -17,9 +17,11 @@ namespace :owner do
 
   scope module: :user do
     root to: 'homes#top'
-    #get 'search' => 'search#search'
     get 'about' => 'homes#about'
     resources :subscriptions,only:[:index, :show] do
+      collection do
+      get 'search' => 'searches#search'
+      end
       resources :reviews,only:[:create, :edit, :update, :destroy]
     end
     resource :users,only:[:edit,:update] do
