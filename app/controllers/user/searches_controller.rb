@@ -9,9 +9,7 @@ class User::SearchesController < ApplicationController
     if @range == '1'
       @subscriptions = Subscription.search(search,@word)
     else
-      p "-----"
       @genres = Genre.search(search,@word)
-      p "-----"
     end
   end
 
