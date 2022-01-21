@@ -62,10 +62,15 @@
           </div>
         </div>
       <div class="edit-button mt-5">
-      <% if current_user == review.user %>
-        <%= link_to '口コミを編集', edit_subscription_review_path(@subscription,review), method: :get, class:'btn btn-default' %>
-        <%= link_to '口コミを削除', subscription_review_path(review) , method: :delete, "data-confirm" => "本当に削除しますか?", class:'btn btn-default' %>
-      <% end %>
+        <% if current_user == review.user %>
+          <%= link_to '口コミを編集', edit_subscription_review_path(@subscription,review), method: :get, class:'btn btn-default' %>
+          <%= link_to '口コミを削除', subscription_review_path(review) , method: :delete, "data-confirm" => "本当に削除しますか?", class:'btn btn-default' %>
+        <% end %>
+      </div>
+      <div = "favorite_buttons_<%= review.id %>">
+        　<%= render "user/shared/favorite", review: review %>
+      </div>
+      </div>
       </div>
       </div>
     </div>

@@ -22,7 +22,9 @@ namespace :owner do
       collection do
       get 'search' => 'searches#search'
       end
-      resources :reviews,only:[:create, :edit, :update, :destroy]
+      resources :reviews,only:[:create, :edit, :update, :destroy] do
+        resource :favorites, only: [:create, :destroy]
+      end
     end
     resource :users,only:[:edit,:update] do
       get 'mypage' => 'users#mypage'

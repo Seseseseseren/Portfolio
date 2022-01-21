@@ -7,7 +7,7 @@ class User < ApplicationRecord
   has_many :subscription_members
   has_many :reviews, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  
+
   attachment :profile_image, destroy:false
   
 end
