@@ -1,9 +1,9 @@
 <% if review.favorited_by?(current_user) %>
-  <%= link_to review_favorites_path(review), method: :delete, remote: true do %>
-  このレビューを<%= review.favorites.count %>人が参考にしています。
-<% end %>
+  <%= link_to subscription_review_favorites_path(subscription, review), method: :delete do %>
+    このレビューを<%= review.favorites.count %>人が参考になったと感じています。
+  <% end %>
 <% else %>
-  <%= link_to review_favorites_path(review), method: :post, remote: true do %>
-  このレビューを<%= review.favorites.count %>人が参考にしています。
-<% end %>
+  <%= link_to subscription_review_favorites_path(subscription, review), method: :post do %>
+    このレビューを<%= review.favorites.count %>人が参考になったと感じています。
+  <% end %>
 <% end %>

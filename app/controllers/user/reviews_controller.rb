@@ -6,7 +6,6 @@ class User::ReviewsController < ApplicationController
     @review.subscription_id = @subscription.id
     @review.user_id = current_user.id
     @review.save
-
     redirect_to request.referer
   end
 
