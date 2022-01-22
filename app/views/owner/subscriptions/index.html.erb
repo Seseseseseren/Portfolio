@@ -2,7 +2,15 @@
  <div class="row">
   <div class="col m-3">
     <h2>サブスクリプション一覧</h2><br>
-        <p class="text-right"><%= link_to "サブスクを新規登録",new_owner_subscription_path, class:"btn btn-primary text-white" %></p>
+    
+    <!--jsで呼びだす星の画像-->
+    <div style="display: none;">
+      <p class="star-on"><%= asset_path('star-on.png') %></p>
+      <p class="star-off"><%= asset_path('star-off.png') %></p>
+      <p class="star-half"><%= asset_path('star-half.png') %></p>
+    </div>
+    
+    <p class="text-right"><%= link_to "サブスクを新規登録",new_owner_subscription_path %></p>
     <table class="table table-borderless">
       <thead>
         <tr>
@@ -11,8 +19,8 @@
           <th scope="col">ジャンル</th>
           <th scope="col">料金</th>
           <th scope="col">支払日</th>
-          <th scope="col">評価</th>
           <th scope="col">レビュー数</th>
+          <th scope="col">平均評価</th>
         </tr>
       </thead>
       <tbody>
@@ -23,8 +31,10 @@
     	  　<th scope="low"><%= subscription.genre.name %></th>
           <th scope="low"><%= subscription.subscription_fee.to_s(:delimited) %>円</th>
           <th scope="low"><%= subscription.payment_date %></th>
-    	    <th></th>
-    	    <th scope="low"><%=  subscription.reviews.count%></th>
+     	    <th scope="low"><%=  subscription.reviews.count%>件</th>
+    	    <th scope="low">
+            <div class ="star-rate" data-review = <%= subscription.reviews.average(:rate).to_f.round(1) %>></div>
+    	    </th>
         </tr>
         <% end %>
       </tbody>

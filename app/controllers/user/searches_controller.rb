@@ -1,15 +1,14 @@
 class User::SearchesController < ApplicationController
-  
+
   def search
-    # rangeが検索モデルを表し、searchが検索方法、wordが検索に記入したワードとする
-    @range = params[:range]
     @word = params[:word]
+    @genre = params[:genre]
     search = params[:search]
-    
-    if @range == '1'
+# ０ならsearch、それ以外ならsearchWithGenreへ飛ぶ
+    if @genre == '0'
       @subscriptions = Subscription.search(search,@word)
     else
-      @genres = Genre.search(search,@word)
+      @subscriptions = Subscription.searchWithGenre(search,@word,@genre)
     end
   end
 

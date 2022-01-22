@@ -21,34 +21,20 @@
 /*global location*/
 
 $(document).on('turbolinks:load',function(){
-  console.log('loading')
   let starOn = $(".star-on").text();
   let starOff = $(".star-off").text();
   let starHalf = $(".star-half").text();
 
-  let pathName = location.pathname;
-  let subscriptionId = pathName.replace("/subscriptions/","").replace("/", "");
-
-  $(`#star-rate-${subscriptionId}`).raty({
+    $(`.star-rate`).raty({
     size:36,
     starOn:  starOn,
     starOff: starOff,
-    starHalf: starHalf ,
+    starHalf: starHalf,
     half :true,
     readOnly: true,
     score: function(){
-      return $(this).attr('data-score');
+      return $(this).attr('data-review');
     }
-  });
+    });
 })
-
-
-                  // $(`#star-rate-<%= @subscription.id %>`).raty({
-                  //   size:36,
-                  //   starOn: "<%= asset_path('star-on.png') %>",
-                  //   starOff: "<%= asset_path('star-off.png') %>",
-                  //   starHalf: "<%= asset_path('star-half.png') %>",
-                  //   half :true,
-                  //   readOnly: true,
-                  //   score:  <%= @subscription.reviews.average(:rate).to_f.round(1) %>
-                  // });
+// 星評価の記述、.star-rateをクラスで指定しているため、ページ内の星の表示は全て上記の記述で完結

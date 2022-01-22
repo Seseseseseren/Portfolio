@@ -1,11 +1,12 @@
 <div class="container">
 <h1 class>サブスクリプション詳細</h1><br>
+  <!--jsで呼びだす星の画像-->
   <div style="display: none;">
     <p class="star-on"><%= asset_path('star-on.png') %></p>
     <p class="star-off"><%= asset_path('star-off.png') %></p>
     <p class="star-half"><%= asset_path('star-half.png') %></p>
   </div>
-
+  
   <div class="row">
     <div class = "col-9 mt-5" >
       <div class="row">
@@ -35,7 +36,8 @@
     	      <tr>
     	        <th>平均評価</th>
     	        <td>
-    	          <div id ="star-rate-<%= @subscription.id %>" data-score = <%= @subscription.reviews.average(:rate).to_f.round(1) %>></div>
+    	          <div class ="star-rate" id ="star-rate-average<%= @subscription.id %>" data-review = <%= @subscription.reviews.average(:rate).to_f.round(1) %>></div>
+    	          <!--classはstar-rateで統一。どのような形で星を出したいかはdata-reviewで統一。-->
     	        </td>
     	      </tr>
     	    </table>
@@ -53,20 +55,9 @@
           <p><%= review.updated_at.strftime("%Y-%m-%d %H:%M:%S")  %></p>
           <h4 class = "review-user">ユーザー名：<%= review.user.user_name %></h4>
           <h4 class ="mb-3  d-inline-flex">
-            評価:<div id = "star-rate-<%= review.id %>"></div>
+            評価:<div class = "star-rate" data-review = <%= review.rate %>></div>
             ｜<%= review.title %>
           </h4>
-          <script>
-            $('#star-rate-<%= review.id %>').raty({
-              size: 36,
-              starOff:  '<%= asset_path('star-off.png') %>',
-              starOn : '<%= asset_path('star-on.png') %>',
-              starHalf: '<%= asset_path('star-half.png') %>',
-              half: true,
-              readOnly: true,
-              score: <%= review.rate %>,
-            });
-          </script>
           <div class="review-body col-11 ml-2">
             <p><%= review.body %></p>
           </div>
@@ -99,7 +90,7 @@
             </div>
           </div>
         <!-- 星の評価 -->
-          <div class="form-group row" id="rate">
+          <div class="review-rate" id="rate">
             <%= f.label :star,'評価 ', class:'col-md-3 col-form-label' %>
             <%= f.hidden_field :star, id: :review_star %>
           </div>
@@ -110,8 +101,8 @@
               starOff:  '<%= asset_path('star-off.png') %>',
               starOn : '<%= asset_path('star-on.png') %>',
               starHalf: '<%= asset_path('star-half.png') %>',
-              scoreName: 'review[rate]',
               half: true,
+              scoreName: 'review[rate]',
             });
           </script>
         <!-- 口コミ -->
@@ -128,7 +119,6 @@
             </div>
           </div>
         <% end %>
-        <%#= render reviews/user_reviews_form, review: @review %>
       </div>
     </div>
   </div>
