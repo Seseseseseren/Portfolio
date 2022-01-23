@@ -5,13 +5,15 @@ class User::ReviewsController < ApplicationController
     @subscription = Subscription.find(params[:subscription_id])
     @review.subscription_id = @subscription.id
     @review.user_id = current_user.id
-    @review.save
+    if Review.find_by(user_id: current_user.id, subscription_id: @subscription.id).nil?
+      @review.save!
+    end
     redirect_to request.referer
   end
 
   def edit
     @review = Review.find(params[:id])
-    @subscription = Subscription.find(params[:id])
+    @subscription = Subscription.find(params[:subscription_id])
   end
 
   def update

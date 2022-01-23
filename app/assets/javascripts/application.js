@@ -26,7 +26,6 @@ $(document).on('turbolinks:load',function(){
   let starHalf = $(".star-half").text();
 
     $(`.star-rate`).raty({
-    size:36,
     starOn:  starOn,
     starOff: starOff,
     starHalf: starHalf,
@@ -36,5 +35,13 @@ $(document).on('turbolinks:load',function(){
       return $(this).attr('data-review');
     }
     });
+    $('#rate').raty({
+      starOn:  starOn,
+      starOff: starOff,
+      starHalf: starHalf,
+      half: true,
+      scoreName: 'review[rate]',
+    });
+
 })
 // 星評価の記述、.star-rateをクラスで指定しているため、ページ内の星の表示は全て上記の記述で完結
