@@ -2,6 +2,14 @@
   <div class="row">
     <div class="col m-3 text-white">
       <h2>レビュー編集</h2>
+    
+      <!--jsで呼びだす星の画像-->
+      <div style="display: none;">
+        <p class="star-on"><%= asset_path('star-on.png') %></p>
+        <p class="star-off"><%= asset_path('star-off.png') %></p>
+        <p class="star-half"><%= asset_path('star-half.png') %></p>
+      </div>
+
       <div class="mt-5">
          <%= form_with model: @review, url:  subscription_review_path(@review.subscription_id, @review), local: true, method: :patch do |f| %>
           <%= f.hidden_field :subscription_id, { value: @subscription.id} %>
@@ -16,16 +24,7 @@
             <%= f.label :star,'評価 ', class:'col-md-3 col-form-label' %>
             <%= f.hidden_field :star, id: :review_star %>
           </div>
-          <script>
-            $('#rate').raty({
-              size     : 36,
-              starOff:  '<%= asset_path('star-off.png') %>',
-              starOn : '<%= asset_path('star-on.png') %>',
-              starHalf: '<%= asset_path('star-half.png') %>',
-              scoreName: 'review[rate]',
-              half: true,
-            });
-          </script>
+
           <div class="form-group row">
             <%= f.label :body, '口コミ内容', class:'col-md-3 col-form-label' %>
             <div class="col-md-9">

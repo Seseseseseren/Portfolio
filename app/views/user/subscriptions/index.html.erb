@@ -8,7 +8,7 @@
       <p class="star-off"><%= asset_path('star-off.png') %></p>
       <p class="star-half"><%= asset_path('star-half.png') %></p>
     </div>
-    
+
     <div class = "search_form">
       <%= form_with url: search_subscriptions_path, local: true, method: :get do |f| %>
      <!--検索ワードをアクションに送る値＝word-->
@@ -18,9 +18,9 @@
       <%= f.select :range, options_for_select([['Subscription','1'],['Genre','2']]) %>
       <!--検索方法のオプション-->
       <%= f.select :search, options_for_select([["完全一致","perfect_match"],["部分一致","partial_match"]]) %>
-      <%= f.submit "検索", class: "btn btn-primary" %>
+      <%= f.submit "検索" %>
       <% end %>
-    </div>
+    </div></br>
     <table class="table table-borderless table-dark" style="opacity: 0.8;">
       <thead>
         <tr>
