@@ -21,6 +21,7 @@ namespace :owner do
     resources :subscriptions,only:[:index, :show] do
       collection do
       get 'search' => 'searches#search'
+      #.get 'sort' => 'searches#sort'
       end
       resources :reviews,only:[:create, :edit, :update, :destroy] do
         resource :favorites, only: [:create, :destroy]

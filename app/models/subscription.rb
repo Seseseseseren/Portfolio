@@ -26,5 +26,25 @@ class Subscription < ApplicationRecord
       @subscriptions = Subscription.where(genre_id:genre)
     end
   end
+  
+  
+  def self.sort_subscriptions(sort)
+    p "sort"
+    p sort
+    # if sort[:sort] == "updated_at_asc"
+    #   order("updated_at ASC")
+    # elsif sort[:sort] == "updated_at_desc"
+    #   order("updated_at DESC")
+    # end
+  end
+  
+  scope :sort_list, -> {
+    {
+      "並び替え" => "",
+      "作成の古い順" => "updated_at ASC",
+      "作成の新しい順" => "updated_at DESC"
+    }
+  }
+
 
 end
