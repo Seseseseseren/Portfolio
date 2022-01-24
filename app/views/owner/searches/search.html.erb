@@ -1,0 +1,40 @@
+<div class="container">
+ <div class="row">
+  <div class="col m-3">
+    <h2>検索結果</h2><br>
+    <!--jsで呼びだす星の画像-->
+    <div style="display: none;">
+      <p class="star-on"><%= asset_path('star-on.png') %></p>
+      <p class="star-off"><%= asset_path('star-off.png') %></p>
+      <p class="star-half"><%= asset_path('star-half.png') %></p>
+    </div>
+    
+    <table class="table table-hover table-inverse">
+      <thead>
+        <tr>
+          <th scope="col">サブスク名</th>
+          <th scope="col">ジャンル</th>
+          <th scope="col">料金</th>
+          <th scope="col">支払日</th>
+          <th scope="col">レビュー数</th>
+          <th scope="col">平均評価</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @subscriptions.each do |subscription| %>
+        <tr>
+          <th scope="low"><%= link_to subscription.subscription_name, owner_subscription_path(subscription.id) %></th>
+    	    <th scope="low"><%= subscription.genre.name %></th>
+          <th scope="low"><%= subscription.subscription_fee.to_s(:delimited) %>円</th>
+          <th scope="low"><%= subscription.payment_date %></th>
+    	    <th scope="low"><%= subscription.reviews.count %>件</th>
+    	    <th scope="low">
+            <div class ="star-rate" data-review = <%= subscription.reviews.average(:rate).to_f.round(1) %>></div>
+    	    </th>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+ </div>
+</div>

@@ -9,8 +9,11 @@ Rails.application.routes.draw do
 
 namespace :owner do
     root to: 'subscriptions#index'
-    #get 'search' => 'search#search'
-    resources :subscriptions
+    resources :subscriptions do
+      collection do
+      get 'search' => 'searches#search'
+    end
+    end
     resources :genres,except:[:show,:destroy,:new]
     resources :users,except:[:new,:create,:destroy]
   end

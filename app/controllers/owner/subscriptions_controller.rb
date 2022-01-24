@@ -3,6 +3,8 @@ class Owner::SubscriptionsController < ApplicationController
 
   def index
     @subscriptions = Subscription.page(params[:page]).per(20)
+    @genre_map =  Genre.all.map { |genre| [genre.name, genre.id] }
+    @genre_map.push(["全て", 0])
   end
 
   def new
