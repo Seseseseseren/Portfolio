@@ -3,7 +3,7 @@ class Owner::SubscriptionsController < ApplicationController
 
   def index
     @subscriptions = Subscription.page(params[:page]).per(20)
-    @genre_map =  Genre.all.map { |genre| [genre.name, genre.id] }
+    @genre_map = Genre.all.map { |genre| [genre.name, genre.id] }
     @genre_map.push(["全て", 0])
   end
 
@@ -24,7 +24,7 @@ class Owner::SubscriptionsController < ApplicationController
   def show
     @subscription = Subscription.find(params[:id])
   end
-  
+
   def edit
     @subscription = Subscription.find(params[:id])
     @genres = Genre.all
@@ -46,8 +46,8 @@ class Owner::SubscriptionsController < ApplicationController
   end
 
   private
+
   def subscription_params
     params.require(:subscription).permit(:subscription_image, :subscription_name, :genre_id, :subscription_fee, :payment_date)
   end
-
 end

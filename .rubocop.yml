@@ -1,0 +1,12 @@
+inherit_from:
+ - .rubocop_airbnb.yml
+ 
+#以下にロボコップの対象外にしたいファイルを指定。
+AllCops:
+ Exclude:
+  - 'db/**/*'
+  - 'bin/*'
+  - 'config/**/*'
+  - 'bin/*'
+  - '.git/**/*'
+  - '**/Gemfile'
