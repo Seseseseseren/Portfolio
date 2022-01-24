@@ -1,4 +1,5 @@
 class User::ReviewsController < ApplicationController
+  before_action :authenticate_user!, only: [:show]
 
   def create
     @review = Review.new(review_params)
@@ -8,7 +9,7 @@ class User::ReviewsController < ApplicationController
     if Review.find_by(user_id: current_user.id, subscription_id: @subscription.id).nil?
       @review.save!
     end
-    redirect_to request.referer
+    redirect_to request.referer, notice:"レビューが投稿できました！"
   end
 
   def edit
@@ -19,7 +20,7 @@ class User::ReviewsController < ApplicationController
   def update
   review = Review.find(params[:id])
   if review.update(review_params)
-    redirect_to subscription_path(review.subscription)
+    redirect_to subscription_path(review.subscription), notice:"レビューが更新されました！"
   else
     redirect_to request.referer
   end
@@ -28,7 +29,7 @@ class User::ReviewsController < ApplicationController
   def destroy
     @review = Review.find(params[:id])
     @review.destroy
-    redirect_to request.referer
+    redirect_to request.referer, notice:"レビューが削除されました"
   end
 
     private

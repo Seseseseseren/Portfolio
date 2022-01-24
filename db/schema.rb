@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 2022_01_20_155019) do
     t.float "rate"
     t.text "body"
     t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "updated_at", null: falses
     t.index ["user_id", "subscription_id"], name: "index_reviews_on_user_id_and_subscription_id", unique: true
   end
 

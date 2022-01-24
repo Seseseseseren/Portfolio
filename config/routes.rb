@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 }
 
 namespace :owner do
-    root to: 'homes#top'
+    root to: 'subscriptions#index'
     #get 'search' => 'search#search'
     resources :subscriptions
     resources :genres,except:[:show,:destroy,:new]
@@ -21,7 +21,6 @@ namespace :owner do
     resources :subscriptions,only:[:index, :show] do
       collection do
       get 'search' => 'searches#search'
-      #.get 'sort' => 'searches#sort'
       end
       resources :reviews,only:[:create, :edit, :update, :destroy] do
         resource :favorites, only: [:create, :destroy]
