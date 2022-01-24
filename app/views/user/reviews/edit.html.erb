@@ -1,8 +1,10 @@
 <div class="container">
   <div class="row">
-    <div class="col m-3 text-white">
+    <div class="col m-3">
       <h2>レビュー編集</h2>
-    
+
+      <%= flash[:failed] %>
+
       <!--jsで呼びだす星の画像-->
       <div style="display: none;">
         <p class="star-on"><%= asset_path('star-on.png') %></p>

@@ -31,12 +31,13 @@
     	  　<th scope="low"><%= subscription.genre.name %></th>
           <th scope="low"><%= subscription.subscription_fee.to_s(:delimited) %>円</th>
           <th scope="low"><%= subscription.payment_date %></th>
-     	    <th scope="low"><%=  subscription.reviews.count%>件</th>
+     	    <th scope="low"><%= subscription.reviews.count %>件</th>
     	    <th scope="low">
             <div class ="star-rate" data-review = <%= subscription.reviews.average(:rate).to_f.round(1) %>></div>
     	    </th>
         </tr>
         <% end %>
+        <%= paginate @subscriptions %>
       </tbody>
     </table>
   </div>

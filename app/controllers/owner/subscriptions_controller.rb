@@ -2,7 +2,7 @@ class Owner::SubscriptionsController < ApplicationController
   before_action :authenticate_owner!
 
   def index
-    @subscriptions = Subscription.all
+    @subscriptions = Subscription.page(params[:page]).per(20)
   end
 
   def new
