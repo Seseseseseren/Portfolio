@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_20_155019) do
+ActiveRecord::Schema.define(version: 2022_01_25_130615) do
 
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id"
@@ -45,15 +45,8 @@ ActiveRecord::Schema.define(version: 2022_01_20_155019) do
     t.float "rate"
     t.text "body"
     t.datetime "created_at", null: false
-    t.datetime "updated_at", null: falses
-    t.index ["user_id", "subscription_id"], name: "index_reviews_on_user_id_and_subscription_id", unique: true
-  end
-
-  create_table "subscription_members", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "subscription_id"
-    t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id", "subscription_id"], name: "index_reviews_on_user_id_and_subscription_id", unique: true
   end
 
   create_table "subscriptions", force: :cascade do |t|
