@@ -1,6 +1,7 @@
 <div class="row">
   <div class="col m-3">
-   <h2 class="text-white">サブスク編集</h2><br>
+   <h2>サブスク編集</h2><br>
+   <%= flash[:danger] %>
    <div class="row">
     <div class="mx-auto">
        <%= form_with model: @subscription, url: owner_subscription_path(@subscription), local:true do |f| %>

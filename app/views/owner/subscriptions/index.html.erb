@@ -10,7 +10,6 @@
       <p class="star-half"><%= asset_path('star-half.png') %></p>
     </div>
 
-    <p class="text-right"><%= link_to "サブスクを新規登録",new_owner_subscription_path %></p>
     <div class = "search_form">
       <%= form_with url: search_owner_subscriptions_path, local: true, method: :get do |f| %>
       <!--検索ワードをアクションに送る値＝word-->
@@ -22,7 +21,7 @@
       <%= f.select :search, options_for_select([["完全一致","perfect_match"],["部分一致","partial_match"]]) %>
       <%= f.submit "検索" %>
       <% end %>
-    </div></br>
+    </div>
     <table class="table table-hover table-inverse">
       <thead>
         <tr>
@@ -39,7 +38,8 @@
         <% @subscriptions.each do |subscription| %>
         <tr>
           <th scope="low"><%= subscription.id %></th>
-          <th scope="low"><%= link_to subscription.subscription_name, owner_subscription_path(subscription) %></th>
+          <!--data: {"turbolinks"=>false}の記述によって、偏移する際のturbolinksをOFFにする。（星が重複することがなくなる。）-->
+          <th scope="low"><%= link_to subscription.subscription_name, owner_subscription_path(subscription),data: {"turbolinks"=>false} %></th>
     	  　<th scope="low"><%= subscription.genre.name %></th>
           <th scope="low"><%= subscription.subscription_fee.to_s(:delimited) %>円</th>
           <th scope="low"><%= subscription.payment_date %></th>
@@ -52,6 +52,7 @@
         <%= paginate @subscriptions %>
       </tbody>
     </table>
+    <p class="text-right"><%= link_to "サブスクを新規登録",new_owner_subscription_path %></p>
   </div>
  </div>
 </div>

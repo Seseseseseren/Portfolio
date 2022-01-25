@@ -75,12 +75,14 @@
         　<%= render "user/shared/favorite", review: review, subscription: @subscription %>
       </div>
       </div>
-      </div>
-      </div>
+    </div>
     <% end %>
-
+    <%= paginate @reviews %>
+  </div>
+  
     <div class="col-md-10">
       <h2>レビューを書く</h2>
+        <%= flash[:failed] %>
       <div class = "rating-box mt-3" >
         <%= form_with model: @review, url: subscription_reviews_path(@subscription.id), local: true do |f| %>
           <%= f.hidden_field :subscription_id, { value: @subscription.id} %>

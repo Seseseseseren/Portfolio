@@ -7,9 +7,13 @@ class User::ReviewsController < ApplicationController
     @review.subscription_id = @subscription.id
     @review.user_id = current_user.id
     if Review.find_by(user_id: current_user.id, subscription_id: @subscription.id).nil?
-      @review.save!
-      flash[:success] = "レビューが投稿できました！"
-      redirect_to subscription_path(@review.subscription)
+      if @review.save
+        flash[:success] = "レビューが投稿できました！"
+        redirect_to subscription_path(@review.subscription)
+      else
+        flash[:failed] = "必要事項に記入が無いため投稿できませんでした。"
+        redirect_to request.referer
+      end
     else
       flash[:danger] = "既にレビューしているため、投稿できませんでした。"
       redirect_to request.referer
@@ -35,7 +39,7 @@ class User::ReviewsController < ApplicationController
   def destroy
     @review = Review.find(params[:id])
     @review.destroy
-    flash[:noti] = "レビューが削除されました"
+    flash[:notice] = "レビューが削除されました"
     redirect_to request.referer
   end
 

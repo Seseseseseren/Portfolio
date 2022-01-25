@@ -2,7 +2,7 @@ class Owner::GenresController < ApplicationController
   before_action :authenticate_owner!
 
   def index
-    @genres = Genre.all
+    @genres = Genre.page(params[:page]).per(10)
     @genre = Genre.new
   end
 

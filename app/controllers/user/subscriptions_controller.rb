@@ -2,7 +2,7 @@ class User::SubscriptionsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
 
   def index
-    @subscriptions = Subscription.page(params[:page]).per(20)
+    @subscriptions = Subscription.page(params[:page]).per(10)
     @genre_map = Genre.all.map { |genre| [genre.name, genre.id] }
     @genre_map.push(["全て", 0])
   end
@@ -12,6 +12,6 @@ class User::SubscriptionsController < ApplicationController
   def show
     @subscription = Subscription.find(params[:id])
     @review = Review.new
-    @reviews = @subscription.reviews
+    @reviews = @subscription.reviews.page(params[:page]).per(5)
   end
 end

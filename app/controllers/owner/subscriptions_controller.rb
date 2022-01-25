@@ -2,7 +2,7 @@ class Owner::SubscriptionsController < ApplicationController
   before_action :authenticate_owner!
 
   def index
-    @subscriptions = Subscription.page(params[:page]).per(20)
+    @subscriptions = Subscription.page(params[:page]).per(10)
     @genre_map = Genre.all.map { |genre| [genre.name, genre.id] }
     @genre_map.push(["全て", 0])
   end
@@ -15,9 +15,11 @@ class Owner::SubscriptionsController < ApplicationController
   def create
     @subscription = Subscription.new(subscription_params)
     if @subscription.save
+      flash[:success] = "新規登録が完了しました"
       redirect_to owner_subscription_path(@subscription)
     else
-      render :new
+      flash[:danger] = "必要な項目に記入が無いため、新規登録に失敗しました"
+      redirect_to request.referer
     end
   end
 
@@ -33,9 +35,11 @@ class Owner::SubscriptionsController < ApplicationController
   def update
     @subscription = Subscription.find(params[:id])
     if @subscription.update(subscription_params)
+      flash[:success] = "更新が完了しましたされました"
       redirect_to owner_subscription_path(@subscription)
     else
-      render :edit
+      flash[:danger] = "必要な項目に記入が無いため、更新に失敗しました"
+      redirect_to request.referer
     end
   end
 

@@ -42,6 +42,6 @@ $(document).on('turbolinks:load',function(){
       half: true,
       scoreName: 'review[rate]',
     });
-
+    
 })
 // 星評価の記述、.star-rateをクラスで指定しているため、ページ内の星の表示は全て上記の記述で完結
