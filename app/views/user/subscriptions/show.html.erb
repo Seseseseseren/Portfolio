@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container"></br>
 <h1 class>サブスクリプション詳細</h1><br>
   <!--jsで呼びだす星の画像-->
   <div style="display: none;">
@@ -14,7 +14,7 @@
           <%= attachment_image_tag @subscription, :subscription_image, :fill, 200, 200  %>
         </div>
         <div class = "col -5" >
-          <table class="table table-borderless">
+          <table class="table table-hover table-inverse">
             <tr>
               <th>サブスク名</th>
     	        <td><%= @subscription.subscription_name %></td>
@@ -46,10 +46,9 @@
     </div>
 
   <div class="row">
-    <%= flash[:create] %>
-    <%= flash[:failed] %>
-    <%= flash[:update] %>
-    <%= flash[:destroy] %>
+    <%= flash[:success] %>
+    <%= flash[:notice] %>
+    <%= flash[:danger] %>
     <% @reviews.each do |review| %>
     <div class="col-md-11 my-5">
       <div class = "col-md-2 d-inline-block">
