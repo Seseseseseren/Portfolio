@@ -42,7 +42,7 @@ class Owner::SubscriptionsController < ApplicationController
   def destroy
     @subscription = Subscription.find(params[:id])
     @subscription.destroy
-    redirect_to request.referer
+    redirect_to owner_subscriptions_path
   end
 
   private

@@ -8,9 +8,12 @@ class User::ReviewsController < ApplicationController
     @review.user_id = current_user.id
     if Review.find_by(user_id: current_user.id, subscription_id: @subscription.id).nil?
       @review.save!
+      flash[:create] = "レビューが投稿できました！"
+      redirect_to subscription_path(@review.subscription)
+    else
+      flash[:failed] = "既にレビューしているため、投稿できませんでした。"
+      redirect_to request.referer
     end
-    flash[:create] = "レビューが投稿できました！"
-    redirect_to request.referer
   end
 
   def edit

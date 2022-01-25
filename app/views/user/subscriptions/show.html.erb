@@ -44,9 +44,10 @@
     	  </div>
       </div>
     </div>
-    
+
   <div class="row">
     <%= flash[:create] %>
+    <%= flash[:failed] %>
     <%= flash[:update] %>
     <%= flash[:destroy] %>
     <% @reviews.each do |review| %>
