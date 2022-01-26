@@ -35,7 +35,7 @@ class Owner::SubscriptionsController < ApplicationController
   def update
     @subscription = Subscription.find(params[:id])
     if @subscription.update(subscription_params)
-      flash[:success] = "更新が完了しましたされました"
+      flash[:success] = "更新が完了しました"
       redirect_to owner_subscription_path(@subscription)
     else
       flash[:danger] = "必要な項目に記入が無いため、更新に失敗しました"
