@@ -21,6 +21,9 @@ namespace :owner do
   scope module: :user do
     root to: 'homes#top'
     get 'about' => 'homes#about'
+    get 'inquiry' => 'inquiries#index'
+    post 'inquiry/confirm' => 'inquiries#confirm'
+    post 'inquiry/thanks' => 'inquiries#thanks'
     resources :subscriptions,only:[:index, :show] do
       collection do
       get 'search' => 'searches#search'
