@@ -23,7 +23,7 @@
       <tbody>
         <% @subscriptions.each do |subscription| %>
         <tr>
-          <th scope="low"><%= link_to subscription.subscription_name, owner_subscription_path(subscription.id) %></th>
+          <th scope="low"><%= link_to subscription.subscription_name, owner_subscription_path(subscription.id), data: {"turbolinks"=>false} %></th>
     	    <th scope="low"><%= subscription.genre.name %></th>
           <th scope="low"><%= subscription.subscription_fee.to_s(:delimited) %>円</th>
           <th scope="low"><%= subscription.payment_date %></th>

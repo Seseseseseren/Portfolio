@@ -39,7 +39,7 @@ class User::ReviewsController < ApplicationController
   def destroy
     @review = Review.find(params[:id])
     @review.destroy
-    flash[:notice] = "レビューが削除されました"
+    flash[:danger] = "レビューが削除されました"
     redirect_to request.referer
   end
 

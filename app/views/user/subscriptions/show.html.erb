@@ -45,17 +45,26 @@
       </div>
     </div>
 
-  <div class="row">
-    <%= flash[:success] %>
-    <%= flash[:notice] %>
-    <%= flash[:danger] %>
+  <div class="col-12">
+    <% if flash[:success] %>
+      <div class="alert alert-success col-4"><%= flash[:success] %></div>
+    <% end %>
+    <% if flash[:danger] %>
+      <div class="alert alert-danger col-4"><%= flash[:danger] %></div>
+    <% end %>
     <% @reviews.each do |review| %>
-    <div class="col-md-11 my-5">
-      <div class = "col-md-2 d-inline-block">
-      </div>
-      <div class = "col-md-10 d-inline-block">
-        <div class = "review-content">
-          <p><%= review.updated_at.strftime("%Y-%m-%d %H:%M:%S")  %></p>
+    <div class="col my-5 border border-radius border-danger">
+      <div class = "col-md-12 d-inline-block">
+        <div class = "review-content col">
+          <div class="edit-button col-12 d-inline-flex">
+            <p class ="col-4 mt-2"><%= review.updated_at.strftime("%Y-%m-%d %H:%M:%S")  %></p>
+            <div class = "text-right col-8">
+              <% if current_user == review.user %>
+              <%= link_to '口コミを編集', edit_subscription_review_path(@subscription,review), method: :get, class:'btn btn-default' %>
+              <%= link_to '口コミを削除', subscription_review_path(@subscription,review) , method: :delete, "data-confirm" => "本当に削除しますか?", class:'btn btn-default' %>
+              <% end %>
+            </div>
+          </div>
           <h4 class = "review-user">ユーザー名：<%= review.user.user_name %></h4>
           <h4 class ="mb-3  d-inline-flex">
             評価:<div class = "star-rate star-size20" data-review = <%= review.rate %>></div>
@@ -65,12 +74,6 @@
             <p><%= review.body %></p>
           </div>
         </div>
-      <div class="edit-button mt-5">
-        <% if current_user == review.user %>
-          <%= link_to '口コミを編集', edit_subscription_review_path(@subscription,review), method: :get, class:'btn btn-default' %>
-          <%= link_to '口コミを削除', subscription_review_path(@subscription,review) , method: :delete, "data-confirm" => "本当に削除しますか?", class:'btn btn-default' %>
-        <% end %>
-      </div>
       <div = "favorite_buttons_<%= review.id %>">
         　<%= render "user/shared/favorite", review: review, subscription: @subscription %>
       </div>
@@ -79,8 +82,9 @@
     <% end %>
     <%= paginate @reviews %>
   </div>
-  
+
     <div class="col-md-10">
+      <%= flash[:notice] %>
       <h2>レビューを書く</h2>
         <%= flash[:failed] %>
       <div class = "rating-box mt-3" >
@@ -98,7 +102,7 @@
           <div class="review-rate" id="rate">
             <%= f.label :star,'評価 ', class:'col-md-3 col-form-label' %>
             <%= f.hidden_field :star, id: :review_star %>
-          </div>
+          </div><br>
         <!-- 口コミ -->
           <div class="form-group row">
             <%= f.label :body, '口コミ内容', class:'col-md-3 col-form-label' %>
