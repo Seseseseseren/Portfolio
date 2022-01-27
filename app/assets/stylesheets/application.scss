@@ -15,6 +15,7 @@
  */
 @import "bootstrap";
 
+// application.html
 .navbar{
   min-height: 40px;
 }
@@ -35,22 +36,65 @@
 
 header{
   font-family:'Economica', sans-serif;
-  font-size: px;
+  font-size: 20px;
   background-color: #f8f9fa;
 }
 
-main{
+footer{
+  font-family:"Economica"	,sans-selif;
+  font-size: 15px;
+  color: #4d4d4d;
+  height: 50px;
+  background-color: #f8f9fa;
+}
+//
+
+// 全体に適用
+body{
+  font-family:'Economica', sans-serif;
+  margin-top: 20px;
   background-color: #e6e6e6;
   background-size: cover;
   height: 100%;
 }
+//
 
-
-footer{
-  font-family:"Lucida Sans Unicode"	,serif;
-  font-size: 25px;
-  background-color: #f8f9fa;
+.Editlink{
+  font-size: 18px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #000000;
 }
+
+
+// トップ画面
+.card-body{
+  background-color:  #b3b3b3;
+}
+//
+
+// アバウト画面
+.display-1{
+  color: #4d4d4d;
+}
+
+.card-about{
+  width: 470px;
+  background-color:  #b3b3b3;
+}
+
+.card-text-about{
+  font-size: 13px;
+}
+
+//
+
+// table
+.table{
+  background-color:  #b3b3b3;
+}
+//
+
 
 #rate img{
   width: 28px;
