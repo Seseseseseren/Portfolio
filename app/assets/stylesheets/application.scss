@@ -15,22 +15,41 @@
  */
 @import "bootstrap";
 
-.navbar-brand img{
-  width: 100px;
+.navbar{
+  min-height: 40px;
 }
 
-header
-{
-  font-family:"Lucida Sans Unicode"	,serif;
-  font-size: 25px;
-  background-color: yellow;
+.navbar-brand{
+  min-height: 50px;
+}
+
+.navbar-brand img{
+  width: 50px;
+  height: 45px;
+}
+
+.navbar-nav > li > a {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+header{
+  font-family:'Economica', sans-serif;
+  font-size: px;
+  background-color: #f8f9fa;
+}
+
+main{
+  background-color: #e6e6e6;
+  background-size: cover;
+  height: 100%;
 }
 
 
 footer{
   font-family:"Lucida Sans Unicode"	,serif;
   font-size: 25px;
-  background-color: yellow;
+  background-color: #f8f9fa;
 }
 
 #rate img{

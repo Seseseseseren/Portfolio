@@ -4,8 +4,8 @@ class User::SearchesController < ApplicationController
     @genre = params[:genre] || params[:subscription][:genre]
     search = params[:search] || params[:subscription][:search]
 
-    p "request query parameter"
-    p request.url
+    #p "request query parameter"
+    #p request.url
     # p request.query_parameters
     # ０ならsearch、それ以外ならsearchWithGenreへ飛ぶ
     if @genre == '0'
