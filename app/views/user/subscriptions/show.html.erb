@@ -45,12 +45,15 @@
       </div>
     </div>
 
-  <div class="col-12">
+  <div class="col-12 mt-2">
     <% if flash[:success] %>
-      <div class="alert alert-success col-4"><%= flash[:success] %></div>
+      <div class="alert alert-success col-6"><%= flash[:success] %></div>
     <% end %>
     <% if flash[:danger] %>
-      <div class="alert alert-danger col-4"><%= flash[:danger] %></div>
+      <div class="alert alert-danger col-6"><%= flash[:danger] %></div>
+    <% end %>
+    <% if flash[:failed] %>
+      <div class="alert alert-danger col-6"><%= flash[:failed] %></div>
     <% end %>
     <% @reviews.each do |review| %>
     <div class="col my-5 border border-radius border-danger">
@@ -84,9 +87,7 @@
   </div>
 
     <div class="col-md-10">
-      <%= flash[:notice] %>
       <h2>レビューを書く</h2>
-        <%= flash[:failed] %>
       <div class = "rating-box mt-3" >
         <%= form_with model: @review, url: subscription_reviews_path(@subscription.id), local: true do |f| %>
           <%= f.hidden_field :subscription_id, { value: @subscription.id} %>

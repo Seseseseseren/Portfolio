@@ -1,4 +1,7 @@
-<h2>ログイン</h2><br>
+<div class="container">
+  <div class="row">
+    <div class="col m-4">
+      <h2>ログイン</h2><br>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 <table>
@@ -23,7 +26,7 @@
         <td></td>
         <td>
           <div class="actions">
-            <%= f.submit "ログイン", class:"btn btn-primary" %>
+            <%= f.submit "ログイン", class:"btn-sm btn-primary" %>
             <label><% if devise_mapping.rememberable? %>
               <div class="field">
                 <%= f.check_box :remember_me %>
@@ -40,3 +43,6 @@
 
 <t5>会員登録がお済ではない方は、</t5>
 <%= render "user/shared/links" %>から新規登録を行ってください
+    </div>
+  </div>
+</div>

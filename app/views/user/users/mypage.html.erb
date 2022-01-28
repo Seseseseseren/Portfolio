@@ -1,10 +1,13 @@
 <div class="container">
   <div class="row">
-    <div class="col text-center">
+    <div class="col m-3">
       <h2 class="text-"><%= @user.user_name %>さんのマイページ</h2>
         <div class="col d-flex aligin-items-center p-3">
           <h4>登録情報</h4>
         </div>
+          <% if flash[:success] %>
+            <div class="alert alert-success col-6"><%= flash[:success] %></div>
+          <% end %>
         <table class="table table-hover table-inverse">
           <tr>
             <td>氏名</td>

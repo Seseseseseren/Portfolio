@@ -2,9 +2,9 @@
   <div class="row">
     <div class="col m-3">
       <h2>レビュー編集</h2>
-
-      <%= flash[:danger] %>
-
+      <% if flash[:danger] %>
+        <div class="alert alert-danger col-6"><%= flash[:danger] %></div>
+      <% end %>
       <!--jsで呼びだす星の画像-->
       <div style="display: none;">
         <p class="star-on"><%= asset_path('star-on.png') %></p>

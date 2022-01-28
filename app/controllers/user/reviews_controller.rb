@@ -29,9 +29,9 @@ class User::ReviewsController < ApplicationController
     review = Review.find(params[:id])
     if review.update(review_params)
       flash[:success] = "レビューが更新されました！"
-      redirect_to subscription_path(review.subscription), flash: { success: "レビューが更新されました" }
+      redirect_to subscription_path(review.subscription)
     else
-      flash[:danger] = "必要な項目に記入が無いため、更新に失敗しました"
+      flash[:danger] = "必要な項目に記入が無いため、更新に失敗しました。"
       redirect_to request.referer
     end
   end
@@ -39,7 +39,7 @@ class User::ReviewsController < ApplicationController
   def destroy
     @review = Review.find(params[:id])
     @review.destroy
-    flash[:danger] = "レビューが削除されました"
+    flash[:danger] = "レビューが削除されました。"
     redirect_to request.referer
   end
 

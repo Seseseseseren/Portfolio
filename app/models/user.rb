@@ -8,5 +8,11 @@ class User < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :favorites, dependent: :destroy
 
-  attachment :profile_image, destroy: false
+  validates :email, presence: true
+  validates :user_name, presence: true
+  validates :family_name, presence: true
+  validates :first_name, presence: true
+  validates :family_name_kana, presence: true
+  validates :first_name_kana, presence: true
+
 end

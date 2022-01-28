@@ -22,8 +22,10 @@ class User::UsersController < ApplicationController
 
   def update
     if current_user.update(user_params)
+      flash[:success] = "プロフィールが更新されました！"
       redirect_to mypage_users_path
     else
+      flash[:danger] = "必要な項目に記入が無いため、更新に失敗しました。"
       redirect_to request.referer
     end
   end
