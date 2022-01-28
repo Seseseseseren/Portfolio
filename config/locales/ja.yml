@@ -1,12 +1,12 @@
 ja:
   activerecord:
-   attribute:
+   attributes:
     user:
      user_name: "ユーザー名"
      family_name: "名字"
      first_name: "名前"
-     family_name_kana: "セイ"
-     first_name_kana: "メイ"
+     family_name_kana: "名字（カナ）"
+     first_name_kana: "名前（カナ）"
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
