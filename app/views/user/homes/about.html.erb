@@ -4,18 +4,28 @@
        <div class="d-flex justify-content-center mb-4">
          <h1 class="display-1">Welcome to<br>SubCom</h1>
        </div>
-          <div class="card-about">
+       <div class="card-group justify-content-center mt-2">
+         <div class="card-about">
             <div class="card-body">
               <h4 class="card-title">最短であなたに合った<br>サブスクリプションを。</h4>
                <p class="card-text-about">
                 SubComとは、サブスクリプションの総合レビューサイト。<br>
                 新しいサブスクを検討している方は是非登録して利用してみてください。<br>
                 （なお、レビューの閲覧・投稿は登録者様のみ可能となります。）
-               </p>
+               </p><br>
                <%= link_to "サブスクリプション一覧へ", subscriptions_path, class:"Editlink" %>/
                <%= link_to "新規登録へ", new_user_registration_path, class:"Editlink" %>
             </div>
           </div>
+            <div class="card-about-mini ml-5 mb-3 mt-5 ">
+            <div class="card-body">
+              <h4 class="card-title">お問合せはこちらから<br></h4>
+               <p class="card-text-about text-center">
+                 <%= link_to "Contact Us", inquiry_path, class:"Editlink" %>
+               </p>
+            </div>
+          </div>
+        </div>
     </div>
   </div>
 </div>
