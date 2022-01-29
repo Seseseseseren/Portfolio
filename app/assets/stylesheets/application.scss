@@ -37,9 +37,9 @@ header{
 
 footer{
   font-family:"Economica"	,sans-selif;
-  font-size: 15px;
+  font-size: 20px;
   color: #4d4d4d;
-  height: 50px;
+  height: 60px;
   background-color: #f8f9fa;
 }
 //
@@ -47,7 +47,8 @@ footer{
 // 全体に適用
 body{
   font-family:'Economica', sans-serif;
-  margin-top: 20px;
+  margin-top: 30px;
+  margin-bottom: 20px;
   background-color: #e6e6e6;
   background-size: cover;
   height: 100%;
@@ -62,6 +63,10 @@ body{
 }
 
 // トップ画面
+
+.main{
+}
+
 .card-body{
   background-color:  #b3b3b3;
 }
