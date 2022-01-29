@@ -5,7 +5,7 @@
 普段利用しているサブスクリプションのレビューを行い情報を蓄積することで、  
 新たにサービスを活用・比較・検討したいユーザーが自身のニーズに合った</br>
 最良のサブスクリプションを選択できるようになることを目標にしています。  </br>
-機能に関しては、コメント投稿・評価機能とランキング機能を実装し、  
+機能に関しては、コメント投稿・評価機能とジャンル検索機能を実装し、  
 ユーザーが利用しやすいサイトとなるように意識して機能を実装します。
 </br>
 ### サイトテーマ
@@ -34,8 +34,8 @@
 ・現在加入しているサブスクリプションを見直したい時 
 </br>
 ## 設計書
-・ER図、テーブル定義書、アプリケーション詳細設計書<https://docs.google.com/spreadsheets/d/1VOgU1CsWpSZVyh5XjybfFjKyEZsqnGJWuR2sesL7FYk/edit?usp=sharing>
-・テスト仕様書<https://docs.google.com/spreadsheets/d/16ts2j0f78VNJadCt1RXT9QFgVbcv_WYJ/edit?usp=sharing&ouid=101222291771252490976&rtpof=true&sd=true>
+・ER図、テーブル定義書、アプリケーション詳細設計書</br><https://docs.google.com/spreadsheets/d/1VOgU1CsWpSZVyh5XjybfFjKyEZsqnGJWuR2sesL7FYk/edit?usp=sharing></br>
+・テスト仕様書<br><https://docs.google.com/spreadsheets/d/16ts2j0f78VNJadCt1RXT9QFgVbcv_WYJ/edit?usp=sharing&ouid=101222291771252490976&rtpof=true&sd=true>
 </br>
 ## チャレンジ要素一覧
 <https://docs.google.com/spreadsheets/d/1PM70dswIWOP3s6IxtfctGxZ6vIkufHChkOP4BzHyjr0/edit?usp=sharing>
