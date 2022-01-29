@@ -20,7 +20,11 @@
       <%= f.select :search, options_for_select([["完全一致","perfect_match"],["部分一致","partial_match"]]) %>
       <%= f.submit "検索" %>
       <% end %>
-    </div></br>
+    </div>
+    <p>
+      名前で検索の場合：[検索欄:サブスク名を記入]、[ジャンル:全てを選択]、[属性:Subscriptionを選択]、[一致条件:どちらかを選択]で検索<br>
+      ジャンル検索の場合：[検索欄:空欄]、[ジャンル:指定のジャンルを選択]、[属性:Genreを選択]、[一致条件:部分一致を選択]で検索
+    </p>
     <table class="table table-hover table-inverse">
       <thead>
         <tr>
