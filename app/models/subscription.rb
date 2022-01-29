@@ -26,16 +26,6 @@ class Subscription < ApplicationRecord
     end
   end
 
-  # def self.sort_subscriptions(sort)
-  # p "sort"
-  # p sort
-  # if sort[:sort] == "updated_at_asc"
-  #   order("updated_at ASC")
-  # elsif sort[:sort] == "updated_at_desc"
-  #   order("updated_at DESC")
-  # end
-  #  end
-
   scope :sort_list, -> {
     {
       "並び替え" => "",

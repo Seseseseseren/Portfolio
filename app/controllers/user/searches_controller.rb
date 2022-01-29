@@ -4,9 +4,6 @@ class User::SearchesController < ApplicationController
     @genre = params[:genre] || params[:subscription][:genre]
     search = params[:search] || params[:subscription][:search]
 
-    #p "request query parameter"
-    #p request.url
-    # p request.query_parameters
     # ０ならsearch、それ以外ならsearchWithGenreへ飛ぶ
     if @genre == '0'
       @subscriptions = Subscription.search(search, @word)
@@ -30,8 +27,6 @@ class User::SearchesController < ApplicationController
     else
       @subscriptions = Subscription.all
     end
-    # @sort_list = Subscription.sort_list
-    # if params
     render :search
   end
 
