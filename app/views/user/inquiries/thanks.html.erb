@@ -1,5 +1,9 @@
 <div class="container">
-  <h1 class=text-center >お問合せをいただきありがとうございました</h1>
-  <p>一週間以内に返信が無ければもう一度お問合せをいただきますようお願い申し上げます。</p>
-  <p><%= link_to "トップページへ", root_path %></p>
+  <div class="row">
+    <div class="col m-3 mt-5">
+      <h1 class="text-center" >お問合せをいただきありがとうございました</h1><br>
+      <h4 class="text-center">一週間以内に返信が無い場合は大変お手数をお掛け致しますが、<br>もう一度お問合せをいただけますと幸いでございます。</h4><br>
+      <h4 class="text-center mt-3"><%= link_to "トップページへ戻る", root_path, class:"Editlink" %></h4>
+    </div>
+  </div>
 </div>

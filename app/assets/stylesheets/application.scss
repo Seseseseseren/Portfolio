@@ -58,7 +58,7 @@ body{
 .Editlink{
   font-size: 19px;
   font-weight: bold;
-  text-decoration: none;
+  text-decoration: underline solid  black;    
   color: #000000;
 }
 
@@ -97,7 +97,7 @@ body{
 }
 //
 
-
+// 星の変更箇所
 #rate img{
   width: 28px;
 }
@@ -105,3 +105,10 @@ body{
 .star-size20 img{
   width: 20px;
 }
+// 
+
+// 問い合わせフォーム
+.form-group-inquiry{
+  background-color:  #b3b3b3;
+}
+// 

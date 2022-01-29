@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col m-3">
-      <h2 class="text-"><%= @user.user_name %>さんのマイページ</h2>
+      <h2 class="text mt-2"><%= @user.user_name %>さんのマイページ</h2>
         <div class="col d-flex aligin-items-center p-3">
           <h4>登録情報</h4>
         </div>
@@ -27,8 +27,8 @@
           </tr>
           <tr></tr>
         </table>
-        <%= link_to "プロフィールを編集する", mypage_edit_users_path %></br>
-        <%= link_to "退会する", unsubscribe_users_path %>
+        <%= link_to "プロフィールを編集する", mypage_edit_users_path, class:"Editlink" %></br>
+        <%= link_to "退会する", unsubscribe_users_path, class:"Editlink" %>
     </div>
   </div>
 </div>

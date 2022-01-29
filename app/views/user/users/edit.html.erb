@@ -9,26 +9,18 @@
         <%= form_with model: @user, url: mypage_update_users_path, local:true do |f| %>
            <div class="col-auto">
              <p>氏名:<p>
-           </div>
-           <div class="col-auto">
              <%= f.text_field :family_name %> <%= f.text_field :first_name %>
            </div>
            <div class="col-auto">
              <p>フリガナ:<p>
-           </div>
-           <div class="col-auto">
              <%= f.text_field :family_name_kana %> <%= f.text_field :first_name_kana %>
            </div>
            <div class="col-auto">
              <p>ユーザーネーム:<p>
-           </div>
-           <div class="col-auto">
              <%= f.text_field :user_name %>
            </div>
            <div class="col-auto">
              <p>メールアドレス:<p>
-           </div>
-           <div class="col-auto">
              <%= f.text_field :email %>
            </div></br>
            <div class="col-auto">
