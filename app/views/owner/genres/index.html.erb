@@ -1,7 +1,13 @@
 <div class="container">
   <div class="row">
     <div class="col m-3">
-      <h2>ジャンル一覧　/　追加</h2>
+      <h2>ジャンル一覧　/　追加</h2><br>
+      <% if flash[:success] %>
+        <div class="alert alert-success col-6"><%= flash[:success] %></div>
+      <% end %>
+      <% if flash[:danger] %>
+      <div class="alert alert-danger col-6"><%= flash[:danger] %></div>
+      <% end %>
       <div class="my-5 text-left">
         <%= form_with model: @genre, url: owner_genres_path, method: :post, local:true do |f| %>
           <p>
