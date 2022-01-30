@@ -60,7 +60,7 @@
       <div class = "col-md-12 d-inline-block">
         <div class = "review-content col">
           <div class="edit-button col-12 d-inline-flex">
-            <p class ="col-4 mt-2"><%= review.updated_at.strftime("%Y-%m-%d %H:%M:%S")  %></p>
+            <p class ="col-4 mt-2"><%= review.updated_at.strftime("%Y-%m-%d")  %></p>
             <div class = "text-right col-8">
               <% if current_user == review.user %>
               <%= link_to '口コミを編集', edit_subscription_review_path(@subscription,review), method: :get, class:'btn btn-default' %>
