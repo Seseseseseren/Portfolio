@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_25_130615) do
+ActiveRecord::Schema.define(version: 2022_02_01_092100) do
 
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id"
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 2022_01_25_130615) do
     t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "score", precision: 5, scale: 3
     t.index ["user_id", "subscription_id"], name: "index_reviews_on_user_id_and_subscription_id", unique: true
   end
 

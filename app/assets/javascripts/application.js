@@ -15,6 +15,8 @@
 //= require turbolinks
 //= require jquery
 //= require jquery.raty.js
+//= require popper
+//= require bootstrap-sprockets
 //= require_tree .
 
 /*global $*/
@@ -24,7 +26,8 @@ $(document).on('turbolinks:load',function(){
   let starOn = $(".star-on").text();
   let starOff = $(".star-off").text();
   let starHalf = $(".star-half").text();
-
+// empty()はjs情報を空にする
+    $(`.star-rate`).empty();
     $(`.star-rate`).raty({
     starOn:  starOn,
     starOff: starOff,

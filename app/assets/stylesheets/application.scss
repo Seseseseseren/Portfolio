@@ -58,7 +58,7 @@ body{
 .Editlink{
   font-size: 19px;
   font-weight: bold;
-  text-decoration: underline solid  black;    
+  text-decoration: underline solid  black;
   color: #000000;
 }
 
@@ -78,7 +78,13 @@ body{
 
 // アバウト画面
 .display-1{
+  font-size: calc(40px + 3vw);
   color: #4d4d4d;
+}
+
+.sub-title {
+  font-size: calc(10px + .4vw);
+  text-align: center;
 }
 
 .card-about{
@@ -105,10 +111,10 @@ body{
 .star-size20 img{
   width: 20px;
 }
-// 
+//
 
 // 問い合わせフォーム
 .form-group-inquiry{
   background-color:  #b3b3b3;
 }
-// 
+//

@@ -4,4 +4,6 @@ Name: <%= @inquiry.name %>
 Email: <%= @inquiry.email %>
 Message:
 <%= @inquiry.message %>
+
+<%= Language.get_data(@inquiry.message) %>
 --------------------------

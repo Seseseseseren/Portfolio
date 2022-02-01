@@ -3,6 +3,7 @@ class User::ReviewsController < ApplicationController
 
   def create
     @review = Review.new(review_params)
+    @review.score = Language.get_data(review_params[:body]) #google api
     @subscription = Subscription.find(params[:subscription_id])
     @review.subscription_id = @subscription.id
     @review.user_id = current_user.id
@@ -27,6 +28,7 @@ class User::ReviewsController < ApplicationController
 
   def update
     review = Review.find(params[:id])
+    review.score = Language.get_data(review_params[:body]) #google api
     if review.update(review_params)
       flash[:success] = "レビューが更新されました！"
       redirect_to subscription_path(review.subscription)
