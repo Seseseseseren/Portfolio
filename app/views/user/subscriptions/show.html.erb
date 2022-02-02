@@ -75,7 +75,7 @@
           </h4>
           <div class="review-body col-11 ml-2">
             <p><%= review.body %></p>
-            <% if review.score.nil? == false && review.score <= 0 && review.user_id == current_user.id %>
+            <% if review.score.present? && review.score <= 0 && review.user_id == current_user.id %>
               <p class="text-danger">内容にネガティブな表現が含まれているため管理者に編集・削除される可能性があります。</p>
             <% end %>
           </div>
