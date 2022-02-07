@@ -74,9 +74,10 @@
             ｜<%= review.title %>
           </h4>
           <div class="review-body col-11 ml-2">
+          <!--もし、投稿者とレビュー者が一緒かつ、ネガティブ値が０.９以上の場合にはフラッシュメッセージを表示-->
             <p><%= review.body %></p>
-            <% if review.score.present? && review.score <= 0 && review.user_id == current_user.id %>
-              <p class="text-danger">内容にネガティブな表現が含まれているため管理者に編集・削除される可能性があります。</p>
+            <% if review.score.present? && review.score <= -0.9 && review.user_id == current_user.id %>
+              <p class="text-danger">内容に不適切な表現が含まれている可能性があるため管理者に編集・削除される可能性があります。</p>
             <% end %>
           </div>
           <div class="favorite_buttons_<%= review.id %>">
