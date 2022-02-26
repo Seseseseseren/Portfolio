@@ -1,5 +1,5 @@
 class User::ReviewsController < ApplicationController
-  before_action :authenticate_user!, only: [:show]
+  before_action :authenticate_user!, except: [:show]
 
   def create
     @review = Review.new(review_params)
@@ -23,6 +23,9 @@ class User::ReviewsController < ApplicationController
 
   def edit
     @review = Review.find(params[:id])
+    if @review.user_id != current_user.id
+    redirect_to root_path
+    end
     @subscription = Subscription.find(params[:subscription_id])
   end
 
