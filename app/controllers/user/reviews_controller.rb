@@ -43,9 +43,13 @@ class User::ReviewsController < ApplicationController
 
   def destroy
     @review = Review.find(params[:id])
+    if @review.user_id != current_user.id
+    redirect_to root_path
+    else
     @review.destroy
     flash[:danger] = "レビューが削除されました。"
     redirect_to request.referer
+    end
   end
 
   private
